@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
 
@@ -43,14 +43,12 @@ import 'primeflex/primeflex.css';
 // Theme
 import 'primevue/resources/themes/md-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css';
-import {createI18n} from "vue-i18n";
+import i18n from "./i18n.js";
 
-const i18n = createI18n({
+const app = createApp(App);
 
-})
-
-createApp(App)
-    .use(i18n)
+// Add prime vue plugin
+app
     .use(PrimeVue, {ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
@@ -78,4 +76,9 @@ createApp(App)
     .component("pv-toolbar", Toolbar)
     .component('pv-toast', Toast)
 
-    .mount('#app')
+
+// Add i18n plugin
+app.use(i18n);
+
+// Mount the app
+app.mount('#app')
