@@ -41,7 +41,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
 // Theme
-import 'primevue/resources/themes/md-light-indigo/theme.css';
+import './assets/theme/theme-light.css';
 import 'primevue/resources/primevue.min.css';
 import i18n from "./i18n.js";
 
