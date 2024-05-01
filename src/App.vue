@@ -1,5 +1,8 @@
+<script setup>
+</script>
+
 <template>
-<h1>
-  Aaca va la navar con los routing y se maqueta todo
-</h1>
+  <div class="w-full">
+    Aca va la navbar y se maqueta todo uwu
+  </div>
 </template>
