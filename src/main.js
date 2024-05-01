@@ -44,6 +44,8 @@ import 'primeflex/primeflex.css';
 import './assets/theme/theme-light.css';
 import 'primevue/resources/primevue.min.css';
 import i18n from "./i18n.js";
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
 
 const app = createApp(App);
 
@@ -58,6 +60,8 @@ app
     .component("pv-column", Column)
     .component("pv-confirm-dialog", ConfirmDialog)
     .component("pv-checkbox", Checkbox)
+    .component("pv-tab-view", TabView)
+    .component("pv-tab-panel", TabPanel)
     .component("pv-data-table", DataTable)
     .component("pv-dialog", Dialog)
     .component("pv-dropdown", Dropdown)
