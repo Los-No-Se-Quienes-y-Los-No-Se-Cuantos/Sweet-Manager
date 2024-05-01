@@ -33,6 +33,7 @@ import Tag from "primevue/tag";
 import Textarea from "primevue/textarea";
 import Toolbar from "primevue/toolbar";
 import Toast from "primevue/toast";
+import Panel from "primevue/panel";
 
 // PrimeIcons
 import 'primeicons/primeicons.css';
@@ -44,6 +45,9 @@ import 'primeflex/primeflex.css';
 import 'primevue/resources/themes/md-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css';
 import i18n from "./i18n.js";
+import Avatar from "primevue/avatar";
+import Divider from "primevue/divider";
+
 
 const app = createApp(App);
 
@@ -58,6 +62,7 @@ app
     .component("pv-column", Column)
     .component("pv-confirm-dialog", ConfirmDialog)
     .component("pv-checkbox", Checkbox)
+    .component("pv-divider", Divider)
     .component("pv-data-table", DataTable)
     .component("pv-dialog", Dialog)
     .component("pv-dropdown", Dropdown)
@@ -68,6 +73,7 @@ app
     .component("pv-input-text", InputText)
     .component('pv-input-number', InputNumber)
     .component("pv-menu", Menu)
+    .component("pv-panel", Panel)
     .component("pv-rating", Rating)
     .component("pv-row", Row)
     .component("pv-sidebar", Sidebar)
@@ -75,6 +81,7 @@ app
     .component('pv-textarea', Textarea)
     .component("pv-toolbar", Toolbar)
     .component('pv-toast', Toast)
+    .component('pv-avatar', Avatar)
 
 
 // Add i18n plugin

@@ -1,8 +1,9 @@
 <script setup>
+import ProfileView from "./profiles/components/profile-view/profile-view.component.vue";
 </script>
 
 <template>
   <div class="w-full">
-    Aca va la navbar y se maqueta todo uwu
+    <profile-view/>
   </div>
 </template>
