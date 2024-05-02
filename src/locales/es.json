@@ -15,6 +15,9 @@
       "account": "Cuenta",
       "delete-account": "Eliminar cuenta",
       "notifications": "Notificaciones"
+    },
+    "employee": {
+      "delete-from-company": "Delete from company"
     }
   },
   "company": {
