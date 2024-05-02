@@ -49,12 +49,20 @@ import 'primeflex/primeflex.css';
 // Theme
 import './assets/theme/theme-light.css';
 import 'primevue/resources/primevue.min.css';
+
+// i18n
 import i18n from "./i18n.js";
+
+// Router
+import router from "./router/index.js";
+import SelectButton from "primevue/selectbutton";
+import CountryFlagEsm from "vue-country-flag-next";
 
 const app = createApp(App);
 
 // Add prime vue plugin
 app
+    .use(router)
     .use(PrimeVue, {ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
@@ -63,6 +71,8 @@ app
     .component("pv-card", Card)
     .component("pv-column", Column)
     .component("pv-confirm-dialog", ConfirmDialog)
+    .component('pv-select-button', SelectButton)
+    .component('pv-dropdown ', Dropdown)
     .component("pv-checkbox", Checkbox)
     .component("pv-tab-view", TabView)
     .component("pv-tab-panel", TabPanel)
@@ -87,6 +97,7 @@ app
     .component('pv-avatar', Avatar)
     .component('pv-divider', Divider)
     .component('pv-chart', Chart)
+    .component('pv-flag', CountryFlagEsm)
 
 // Add i18n plugin
 app.use(i18n);

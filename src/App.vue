@@ -1,15 +1,25 @@
 <script>
-import NotificationsContent from "./interaction/components/notifications-content.component.vue";
+import ToolbarComponent from "./public/components/toolbar.component.vue";
 
 export default {
   name: "app",
-  components: {NotificationsContent},
+  components: {ToolbarComponent},
 }
 
 </script>
 
 <template>
-  <div class="w-full">
-    <notifications-content/>
-  </div>
+<!--  <pv-toast/>-->
+  <header>
+    <toolbar-component/>
+  </header>
+<!--  <router-view/>-->
 </template>
+
+<style scoped>
+
+:root {
+  margin: 0;
+  padding: 0;
+}
+</style>
