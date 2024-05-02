@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "view": {
+      "title": "Mi Perfil",
+      "name": "Nombre",
+      "change-name": "Cambiar nombre",
+      "email": "Correo electrónico",
+      "change-email": "Cambiar correo electrónico",
+      "company": "Empresa",
+      "see-company": "Ver empresa",
+      "company-position": "Rol dentro de la empresa",
+      "change-company-position": "Cambiar rol",
+      "password": "Contraseña",
+      "change-password": "Cambiar contraseña",
+      "account": "Cuenta",
+      "delete-account": "Eliminar cuenta",
+      "notifications": "Notificaciones"
+    }
+  },
+  "company": {
+    "view": {
+      "title": "Mi Empresa",
+      "info": "Información",
+      "business-name": "Razón social",
+      "change-business-name": "Cambiar razón social",
+      "change-ruc": "Cambiar RUC",
+      "company": "Empresa",
+      "delete-company": "Eliminar empresa"
+    },
+    "employees": {
+      "title": "Trabajadores",
+      "search-employee": "Buscar trabajadores",
+      "invite-employee": "Invitar trabajadores",
+      "see-more": "Ver mas"
+    }
+  }
+}

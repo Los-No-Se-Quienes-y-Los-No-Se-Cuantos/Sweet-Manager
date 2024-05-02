@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "view": {
+      "title": "My Profile",
+      "name": "Name",
+      "change-name": "Change Name",
+      "email": "Email",
+      "change-email": "Change Email",
+      "company": "Company",
+      "see-company": "See Company",
+      "company-position": "Company Position",
+      "change-company-position": "Change Position",
+      "password": "Password",
+      "change-password": "Change Password",
+      "account": "Account",
+      "delete-account": "Delete Account",
+      "notifications": "Notifications"
+    }
+  },
+  "company": {
+    "view": {
+      "title": "My Company",
+      "info": "Information",
+      "business-name": "Business Name",
+      "change-business-name": "Change business name",
+      "change-ruc": "Change RUC",
+      "company": "Company",
+      "delete-company": "Delete Company"
+    },
+    "employees": {
+      "title": "Employees",
+      "search-employee": "Search employee",
+      "invite-employee": "Invite employees",
+      "see-more": "See more"
+    }
+  }
+}
