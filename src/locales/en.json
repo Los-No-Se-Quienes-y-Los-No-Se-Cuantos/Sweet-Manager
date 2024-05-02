@@ -16,5 +16,22 @@
       "delete-account": "Delete Account",
       "notifications": "Notifications"
     }
+  },
+  "company": {
+    "view": {
+      "title": "My Company",
+      "info": "Information",
+      "business-name": "Business Name",
+      "change-business-name": "Change business name",
+      "change-ruc": "Change RUC",
+      "company": "Company",
+      "delete-company": "Delete Company"
+    },
+    "employees": {
+      "title": "Employees",
+      "search-employee": "Search employee",
+      "invite-employee": "Invite employees",
+      "see-more": "See more"
+    }
   }
 }
