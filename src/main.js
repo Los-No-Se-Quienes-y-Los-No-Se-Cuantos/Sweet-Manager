@@ -33,6 +33,12 @@ import Tag from "primevue/tag";
 import Textarea from "primevue/textarea";
 import Toolbar from "primevue/toolbar";
 import Toast from "primevue/toast";
+import Chart from 'primevue/chart';
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
+import Panel from "primevue/panel";
+import Avatar from "primevue/avatar";
+import Divider from "primevue/divider";
 
 // PrimeIcons
 import 'primeicons/primeicons.css';
@@ -44,11 +50,6 @@ import 'primeflex/primeflex.css';
 import './assets/theme/theme-light.css';
 import 'primevue/resources/primevue.min.css';
 import i18n from "./i18n.js";
-import TabView from "primevue/tabview";
-import TabPanel from "primevue/tabpanel";
-import Panel from "primevue/panel";
-import Avatar from "primevue/avatar";
-import Divider from "primevue/divider";
 
 const app = createApp(App);
 
@@ -85,6 +86,7 @@ app
     .component('pv-panel', Panel)
     .component('pv-avatar', Avatar)
     .component('pv-divider', Divider)
+    .component('pv-chart', Chart)
 
 // Add i18n plugin
 app.use(i18n);
