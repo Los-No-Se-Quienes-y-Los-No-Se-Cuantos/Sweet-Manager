@@ -1,5 +1,12 @@
 <script>
 export default {
+  // *
+  // * @name company-content
+  // * @description Componente que muestra la información de la empresa
+  // *
+  // * @param {Object} company - Información de la empresa
+  // * @param {Boolean} can_edit - Indica si se puede editar la información de la empresa
+  // *
   name: "company-content",
   props: {
     company: {
