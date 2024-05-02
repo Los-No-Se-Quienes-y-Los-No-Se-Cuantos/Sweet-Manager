@@ -7,7 +7,7 @@ const http = axios.create({
 export class NotificationsApiService {
 
   async getNotifications() {
-    let response = await http.get("/notifications")
+    let response = await http.get("/notifications");
     return response.data;
   }
 }

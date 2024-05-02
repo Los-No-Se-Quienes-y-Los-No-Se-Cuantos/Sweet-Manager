@@ -86,7 +86,6 @@ app
     .component('pv-avatar', Avatar)
     .component('pv-divider', Divider)
 
-
 // Add i18n plugin
 app.use(i18n);
 
