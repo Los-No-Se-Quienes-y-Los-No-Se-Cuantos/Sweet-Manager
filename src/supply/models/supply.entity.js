@@ -1,9 +1,9 @@
 export class Supply {
-    constructor(id= 0, product = '', quantity = 0, location = '', expire = '') {
+    constructor(id= 0, product = '', quantity = 0, address = '', expire = '') {
         this.id=id;
         this.product=product;
         this.quantity=quantity;
-        this.location=location;
+        this.address=address;
         this.expire=expire;
     }
 }
