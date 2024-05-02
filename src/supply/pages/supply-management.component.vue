@@ -140,11 +140,11 @@ export default {
       v-on:delete-item="onDeleteItemEventHandler($event)"
       v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
       <template #custom-columns>
-        <pv-column :sortable="true" field="id"              header="Id"              style="min-width: 12rem"/>
-        <pv-column :sortable="true" field="product"         header="Product"         style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="quantity"        header="Quantity"        style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="address"         header="Address"         style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="expire"          header="Expire"          style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="id" header="Id" style="min-width: 12rem"/>
+        <pv-column :sortable="true" field="product" header="Product" style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="quantity" header="Quantity" style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="address" header="Address" style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="expire" header="Expiration Date" style="min-width: 16rem"/>
       </template>
     </data-manager>
     <!-- Tutorial Item Create and Edit Dialog -->

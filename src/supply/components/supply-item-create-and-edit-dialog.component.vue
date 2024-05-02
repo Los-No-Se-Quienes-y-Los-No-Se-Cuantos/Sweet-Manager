@@ -31,7 +31,7 @@ export default {
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="product">Producto</label>
+            <label for="product">Product</label>
             <pv-input-text id="product" v-model="item.product" :class="{'p-invalid': submitted && !item.product}"/>
             <small v-if="submitted && !item.product" class="p-invalid">Product title is required.</small>
           </pv-float-label>
@@ -39,7 +39,7 @@ export default {
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="quantity">Cantidad</label>
+            <label for="quantity">Quantity</label>
             <pv-input-text id="quantity" v-model="item.quantity" :class="{'p-invalid': submitted && !item.quantity}"/>
             <small v-if="submitted && !item.quantity" class="p-invalid">Quantity is required.</small>
           </pv-float-label>
@@ -47,7 +47,7 @@ export default {
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="address">Ubicacion</label>
+            <label for="address">Address</label>
             <pv-input-text id="address" v-model="item.address" :class="{'p-invalid': submitted && !item.address}"/>
             <small v-if="submitted && !item.address" class="p-invalid">Address is required.</small>
           </pv-float-label>
@@ -55,9 +55,9 @@ export default {
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="expire">Fecha de vencimiento</label>
+            <label for="expire">Expiration date</label>
             <pv-input-text id="expire" v-model="item.expire" :class="{'p-invalid': submitted && !item.expire}"/>
-            <small v-if="submitted && !item.expire" class="p-invalid">Expire date is required.</small>
+            <small v-if="submitted && !item.expire" class="p-invalid">Expiration date is required.</small>
           </pv-float-label>
         </div>
 

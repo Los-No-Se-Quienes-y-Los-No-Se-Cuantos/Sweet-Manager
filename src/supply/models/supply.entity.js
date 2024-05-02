@@ -1,5 +1,5 @@
 export class Supply {
-    constructor(id, product, quantity, address, expire) {
+    constructor(id = 0, product= '', quantity= 0, address= '', expire = '') {
         this.id=id;
         this.product=product;
         this.quantity=quantity;
