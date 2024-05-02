@@ -9,7 +9,9 @@ export default {
     visible: Boolean
   },
   data() {
-    return {submitted: false}
+    return {
+      submitted: false
+    }
   },
   methods: {
     canceledEventHandler() {

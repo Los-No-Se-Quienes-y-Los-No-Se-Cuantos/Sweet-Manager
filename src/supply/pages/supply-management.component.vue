@@ -59,7 +59,7 @@ export default {
     },
     onSavedEventHandler(item) {
       this.submitted = true;
-      if (this.supply.name.trim()) {
+      if (this.supply.product.trim()) {
         if (item.id) {
           this.updateSupply();
         } else {
@@ -80,7 +80,7 @@ export default {
 
             this.supply = Supply.toDisplayableSupply(response.data);
             this.supplies.push(this.supply);
-            this.notifySuccessfulAction("Supply Added");
+            this.notifySuccessfulAction("Supply Created");
           });
     },
     // Update an existing item
@@ -168,7 +168,6 @@ export default {
 @media screen and (max-width: 960px) {
   :deep(.p-toolbar) {
     flex-wrap: wrap;
-
   }
 }
 
