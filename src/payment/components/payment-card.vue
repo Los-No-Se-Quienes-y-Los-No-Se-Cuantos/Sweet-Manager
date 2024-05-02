@@ -3,7 +3,7 @@ export default {
 name: "payment-card",
   data(){
   return{
-      plan1: 'basico',
+      plan1: 'basic',
       plan2: 'regular',
       plan3: 'premium'
     }
