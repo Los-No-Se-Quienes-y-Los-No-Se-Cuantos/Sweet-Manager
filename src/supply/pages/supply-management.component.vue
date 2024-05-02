@@ -101,7 +101,7 @@ export default {
     deleteSupply() {
       this.supplyControlService.delete(this.supply.id)
           .then(() => {
-            this.supplies = this.rooms.filter((s) => s.id !== this.supply.id);
+            this.supplies = this.supplies.filter((s) => s.id !== this.supply.id);
             this.supply = {};
 
             this.notifySuccessfulAction("Supply Deleted");
@@ -109,7 +109,7 @@ export default {
     },
 
     // Delete selected tutorials
-    deleteSelectedRooms() {
+    deleteSelectedSupplies() {
       this.selectedSupplies.forEach((supply) => {
         this.supplyControlService.delete(supply.id).then(() => {
           this.supplies = this.supplies.filter((s) => s.id !== this.supply.id);
