@@ -46,6 +46,9 @@ import 'primevue/resources/primevue.min.css';
 import i18n from "./i18n.js";
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
+import Panel from "primevue/panel";
+import Avatar from "primevue/avatar";
+import Divider from "primevue/divider";
 
 const app = createApp(App);
 
@@ -79,6 +82,9 @@ app
     .component('pv-textarea', Textarea)
     .component("pv-toolbar", Toolbar)
     .component('pv-toast', Toast)
+    .component('pv-panel', Panel)
+    .component('pv-avatar', Avatar)
+    .component('pv-divider', Divider)
 
 
 // Add i18n plugin
