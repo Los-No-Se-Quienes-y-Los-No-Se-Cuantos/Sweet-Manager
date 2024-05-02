@@ -1,5 +1,13 @@
+
 <script>
 export default {
+  // *
+  // * @name company-employees-content
+  // * @description Componente que muestra la lista de empleados de la empresa
+  // *
+  // * @param {Array} employees - Lista de empleados de la empresa
+  // * @param {Boolean} can_invite - Indica si se puede invitar a un empleado
+  // *
   name: "company-employees-content",
   props: {
     employees: {

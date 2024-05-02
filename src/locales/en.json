@@ -15,6 +15,9 @@
       "account": "Account",
       "delete-account": "Delete Account",
       "notifications": "Notifications"
+    },
+    "employee": {
+      "delete-from-company": "Delete from company"
     }
   },
   "company": {

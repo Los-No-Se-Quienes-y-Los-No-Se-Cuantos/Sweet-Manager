@@ -2,6 +2,12 @@
 
 export default {
   name: "profile-view",
+  props: {
+    is_user: {
+      type: Boolean,
+      default: false,
+    }
+  },
   data() {
     return {
       name: 'Winston Smith',
@@ -21,7 +27,7 @@ export default {
       <div class="flex flex-column mr-5 w-4">
         <div class="flex align-items-center justify-content-center col-12 col-md-6 pb-0 mb-0">
           <h2>
-            {{ $t('profile.view.title') }}
+            {{ is_user ? $t('profile.view.title') : name }}
           </h2>
         </div>
         <div class="flex align-items-center justify-content-center col-auto max-h-3rem">
@@ -85,7 +91,8 @@ export default {
           </div>
           <pv-divider class="mt-2 mb-0 pb-0"/>
         </div>
-        <div class="col-12 col-md-6">
+
+        <div v-if="is_user" class="col-12 col-md-6">
           <div class="flex flex-column">
             <p>
               <strong class="text-2xl mr-3">
@@ -99,6 +106,7 @@ export default {
           </div>
           <pv-divider class="mt-2 mb-0 pb-0"/>
         </div>
+
         <div class="col-12 col-md-6">
           <div class="flex flex-column">
             <p class="mb-1">
@@ -106,13 +114,13 @@ export default {
                 {{ $t('profile.view.account') }}
               </strong>
             </p>
-            <a class="text-sm" style="color: red">
-              {{ $t('profile.view.delete-account') }}
+            <a class="underline text-sm" style="color: red">
+              {{ is_user ? $t('profile.view.delete-account') : $t('profile.employee.delete-from-company') }}
             </a>
           </div>
 
         </div>
-        <div class="col-12 col-md-6">
+        <div v-if="is_user" class="col-12 col-md-6">
           <div class="flex flex-row align-items-center">
             <p>
               <strong class="text-2xl mr-3">
