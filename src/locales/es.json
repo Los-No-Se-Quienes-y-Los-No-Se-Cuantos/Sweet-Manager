@@ -36,5 +36,44 @@
       "invite-employee": "Invitar trabajadores",
       "see-more": "Ver mas"
     }
+  },
+  "charts": {
+    "header": "Panel de control",
+    "title": "Reportes Estadísticos",
+    "room": {
+      "type": "Ocupación por tipo de habitación",
+      "title": "Grafico de ocupación por tipo de habitación",
+      "types": {
+        "1": "Económica",
+        "2": "Estándar",
+        "3": "Deluxe",
+        "4": "Suite"
+      }
+    },
+    "months": {
+      "1": "Enero",
+      "2": "Febrero",
+      "3": "Marzo",
+      "4": "Abril",
+      "5": "Mayo",
+      "6": "Junio",
+      "7": "Julio",
+      "8": "Agosto",
+      "9": "Septiembre",
+      "10": "Octubre",
+      "11": "Noviembre",
+      "12": "Diciembre"
+    },
+    "monthly": {
+      "title": "Grafico de ingresos mensuales",
+      "type": "Ingresos mensuales"
+    },
+    "monthly-income-expense": {
+      "title": "Grafico de ingresos y gastos mensuales",
+      "type": {
+        "income": "Ingresos",
+        "expense": "Gastos"
+      }
+    }
   }
 }
