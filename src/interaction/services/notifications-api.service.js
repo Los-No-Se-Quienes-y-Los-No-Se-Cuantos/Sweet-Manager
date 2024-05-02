@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const http = axios.create({
-  baseURL: "https://sweetmanager.ryzeon.me/"
+  baseURL: "https://sweetmanager.ryzeon.me"
 })
 
 export class NotificationsApiService {
