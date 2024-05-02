@@ -12,10 +12,22 @@ export class Room {
         this.totalBathrooms = totalBathrooms;
         this.totalTelevision = totalTelevision;
         this.isBusy = isBusy;
-        this.status = this.isBusy === true ? 'busy' : 'not busy';
+
+        if (this.isBusy === true){
+            this.status = 'busy';
+        }
+        else if (this.isBusy === false){
+            this.status = 'not busy';
+        }
     }
 
     static fromDisplayableRoom(displayableRoom) {
+        if (displayableRoom.status.value === 'busy'){
+            displayableRoom.isBusy = true;
+        }
+        else if (displayableRoom.status.value === 'not busy'){
+            displayableRoom.isBusy = false;
+        }
 
         return new Room(
             displayableRoom.id,
@@ -27,10 +39,20 @@ export class Room {
             displayableRoom.totalBeds,
             displayableRoom.totalBathrooms,
             displayableRoom.totalTelevision,
-            displayableRoom.status === 'not busy');
+            displayableRoom.isBusy);
     }
 
     static toDisplayableRoom(room) {
+
+        let temp = '';
+
+        if (room.isBusy === true){
+            temp = 'busy';
+        }
+        else if (room.isBusy === false){
+            temp = 'not busy';
+        }
+
         return {
             id: room.id,
             name: room.name,
@@ -41,7 +63,7 @@ export class Room {
             totalBeds: room.totalBeds,
             totalBathrooms: room.totalBathrooms,
             totalTelevision: room.totalTelevision,
-            status: room.isBusy === true ? 'busy' : 'not busy'
+            status: temp
         };
     }
 }
