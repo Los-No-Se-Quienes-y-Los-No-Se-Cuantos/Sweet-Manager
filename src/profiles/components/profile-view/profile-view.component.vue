@@ -1,23 +1,30 @@
 <script>
 
+import {LoginService} from "../../../iam/service/login-service.js";
+
 export default {
   name: "profile-view",
-  props: {
-    is_user: {
-      type: Boolean,
-      default: true,
-    }
-  },
   data() {
     return {
-      name: 'Winston Smith',
-      email: 'winston123@gmail.com',
-      company: 'Peru Agro J & V S.A.C',
-      role: 'Administrador',
-      password: '*******',
-      notifications: true,
+      user: {},
+      loginService: null,
     }
   },
+  created() {
+    const id = this.$route.params.id;
+    console.log(id);
+    console.log("olaaaa");
+    this.loginService = new LoginService();
+    this.loginService.getUser(id).then(response => {
+      this.user = this.loginService.getUserFromResponse(response.data);
+    });
+  },
+  computed: {
+    is_user() {
+      const localId = localStorage.getItem('id');
+      return this.id === parseInt(localId);
+    },
+  }
 }
 </script>
 
@@ -27,7 +34,7 @@ export default {
       <div class="flex flex-column mr-5 w-4">
         <div class="flex align-items-center justify-content-center col-12 col-md-6 pb-0 mb-0">
           <h2>
-            {{ is_user ? $t('profile.view.title') : name }}
+            {{ is_user ? $t('profile.view.title') : user.name }}
           </h2>
         </div>
         <div class="flex align-items-center justify-content-center col-auto max-h-3rem">
@@ -41,7 +48,7 @@ export default {
               <strong class="text-2xl mr-3">
                 {{ $t('profile.view.name') }}:
               </strong>
-              {{ name }}
+              {{ user.name }}
             </p>
             <a class="underline text-sm mb-1" href="#">
               {{ $t('profile.view.change-name') }}
@@ -55,7 +62,7 @@ export default {
               <strong class="text-2xl mr-3">
                 {{ $t('profile.view.email') }}:
               </strong>
-              {{ email }}
+              {{ user.email }}
             </p>
             <a class="underline text-sm mb-1" href="#">
               {{ $t('profile.view.change-email') }}
@@ -69,7 +76,7 @@ export default {
               <strong class="text-2xl mr-3">
                 {{ $t('profile.view.company') }}:
               </strong>
-              {{ company }}
+              {{ user.company }}
             </p>
             <a class="underline text-sm mb-1" href="#">
               {{ $t('profile.view.see-company') }}
@@ -98,7 +105,8 @@ export default {
               <strong class="text-2xl mr-3">
                 {{ $t('profile.view.password') }}:
               </strong>
-              {{ password }}
+              <!--              {{ password }}-->
+              ********
             </p>
             <a class="underline text-sm mb-1" href="#">
               {{ $t('profile.view.change-password') }}
@@ -127,7 +135,7 @@ export default {
                 {{ $t('profile.view.notifications') }}:
               </strong>
             </p>
-            <pv-checkbox class="bg-green-500" v-model="notifications" binary/>
+            <pv-checkbox class="bg-green-500" v-model="user.notifications" binary/>
           </div>
         </div>
       </div>

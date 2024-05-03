@@ -31,7 +31,6 @@ export default {
 
 <template>
   <div class="w-full">
-    awdawd
     <!-- Notification Data Manager -->
     <notification-table
         v-bind:items="notifications"

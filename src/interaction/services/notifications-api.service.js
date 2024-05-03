@@ -1,13 +1,8 @@
-import axios from "axios"
-
-const http = axios.create({
-  baseURL: "https://sweetmanager.ryzeon.me"
-})
+import http from "../../shared/services/http-common.js";
 
 export class NotificationsApiService {
 
   async getNotifications() {
-    let response = await http.get("/notifications");
-    return response.data;
+    return http.get('/notifications');
   }
 }

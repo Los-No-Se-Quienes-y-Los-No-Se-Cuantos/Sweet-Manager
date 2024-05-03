@@ -1,13 +1,13 @@
 <script>
 
 import RoomItemCreateAndEditDialog from "../components/room-item-create-and-edit-dialog.component.vue";
-import DataManager from "../../shared/components/data-manager.component.vue";
 import {RoomControlApiService} from "../services/room-control-api.service.js";
 import {Room} from "../model/room.entity.js";
+import DataManager from "../../../shared/components/data-manager.component.vue";
 
 export default {
   name: "room-management",
-  components: {RoomItemCreateAndEditDialog, DataManager},
+  components: {DataManager, RoomItemCreateAndEditDialog},
   data() {
     return {
       title: { singular: 'Room', plural: 'Rooms' },

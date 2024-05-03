@@ -1,6 +1,6 @@
 <script>
 
-import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
+import CreateAndEdit from "../../../shared/components/create-and-edit.component.vue";
 
 export default {
   name: "room-item-create-and-edit-dialog",

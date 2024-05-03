@@ -4,11 +4,17 @@ import RegisterView from "../register-view/register-view.component.vue";
 import LoginView from "../login-view/login-view.component.vue";
 
 export default {
-  name: "access-vue",
+  name: "access-content",
   components: {LoginView, RegisterView},
   computed: {
     i18n() {
       return i18n
+    }
+  },
+  created() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.$router.push('/panel');
     }
   }
 }

@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <pv-toast/>
+  <pv-toast position="bottom-center"/>
   <header>
     <toolbar-component/>
   </header>
