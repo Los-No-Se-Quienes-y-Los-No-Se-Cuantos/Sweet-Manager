@@ -2,7 +2,29 @@
   "login-view": {
     "title": "Welcome to Sweet Manager",
     "login": "Login",
-    "signup": "Sign up company"
+    "signup": "Sign up company",
+    "sub": {
+      "text": "Don't have an account?",
+      "link": "create an account"
+    },
+    "login-panel": {
+      "email": "Email",
+      "password": "Password",
+      "remember": "Remember me",
+      "login": "Login",
+      "forgot": "Forgot password?"
+    },
+    "signup-panel": {
+      "company-name": "Company Name",
+      "name-lastname": "Name and Lastname (Owner)",
+      "email": "Email",
+      "password": "Password",
+      "signup": "Sign up",
+      "terms": {
+        "text": "By signing up, you agree to our",
+        "link": "Terms and Conditions"
+      }
+    }
   },
   "profile": {
     "view": {

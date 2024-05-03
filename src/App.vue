@@ -23,7 +23,7 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  height: 90.6vh;
+  height: calc(100vh - 80px);
 }
 
 .router-view {

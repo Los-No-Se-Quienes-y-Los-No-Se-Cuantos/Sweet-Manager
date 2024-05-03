@@ -1,7 +1,30 @@
 {
   "login-view": {
-    "login": "Login",
-    "signup": "Sign Up"
+    "title": "Bienvenido a Sweet Manager",
+    "login": "Iniciar Sesion",
+    "signup": "Registrarse empresa",
+    "sub": {
+      "text": "Por favor inicia sesión o",
+      "link": "crea una cuenta"
+    },
+    "login-panel": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "remember": "Recuerdame",
+      "login": "Iniciar Sesion",
+        "forgot": "Olvidaste tu contraseña?"
+    },
+    "signup-panel": {
+      "company-name": "Razón social de la empresa",
+      "name-lastname": "Nombre y apellidos del registrante",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "signup": "Registar Empresa",
+      "terms": {
+        "text": "Al registrarte, aceptas los",
+        "link": "Términos y Condiciones y Política de Privacidad"
+      }
+    }
   },
   "profile": {
     "view": {

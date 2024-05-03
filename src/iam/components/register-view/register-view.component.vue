@@ -1,101 +1,91 @@
 <script>
 
+import i18n from "../../../i18n.js";
+
 export default {
   name: "register-view",
-  data(){
+  computed: {
+    i18n() {
+      return i18n
+    }
+  },
+  data() {
     return {
-      forgetPassword: 'Olvide mi contraseña',
-      AceptTerm: true,
-      register: 'Registrar empresa'
+      company_name: "",
+      ruc: "",
+      email: "",
+      name_and_lastname: "",
+      password: "",
+      terms: true,
     }
   }
 }
-import { ref } from 'vue';
-const value = ref('One-Way');
-
 </script>
 
 <template>
-  <pv-card style="width: 40rem; overflow: hidden">
-    <template #header>
-    </template>
-    <template #title>Bienvenido a Sweet Manager</template>
-    <template #subtitle>Para disfrutar de la aplicación, por favor inicia sesión o registra una empresa .</template>
-    <template #content>
-      <div class="card flex justify-content-center">
-        <SelectButton v-model="value" :options="options" aria-labelledby="basic" invalid />
-      </div>
-      <br>
+  <div class="mb-4 mt-2">
+    <pv-float-label class="w-full">
+      <pv-input-text v-model="company_name" :label="i18n.global.t('login-view.signup-panel.company-name')" type="text"
+                     class="w-12"/>
+      <label slot="label">
+        {{ i18n.global.t('login-view.signup-panel.company-name') }}
+      </label>
+    </pv-float-label>
+  </div>
 
-      <div class="card flex justify-content-center">
-        <FloatLabel>
-          <InputText id="RScompany" v-model="value" />
-          <label for="RScompany">Razón social de la empresa</label>
-        </FloatLabel>
+  <div class="mb-4 mt-2">
+    <pv-float-label class="w-full">
+      <pv-input-text v-model="ruc" label="ruc" type="text" class="w-12"/>
+      <label slot="label">
+        RUC
+      </label>
+    </pv-float-label>
+  </div>
 
-      </div>
-      <div class="card flex justify-content-center">
-        <FloatLabel>
-          <InputText id="RUC" v-model="value" />
-          <label for="RUC">RUC</label>
-        </FloatLabel>
+  <div class="mb-4 mt-2">
+    <pv-float-label class="w-full">
+      <pv-input-text v-model="email" :label="i18n.global.t('login-view.signup-panel.email')" type="mail" class="w-12"/>
+      <label slot="label">
+        {{ i18n.global.t('login-view.signup-panel.email') }}
+      </label>
+    </pv-float-label>
+  </div>
 
-      </div>
-      <div class="card flex justify-content-center">
-        <FloatLabel>
-          <InputText id="Correo Electronico" v-model="value" />
-          <label for="Correo Electronico">Correo Electronico</label>
-        </FloatLabel>
+  <div class="mb-4 mt-2">
+    <pv-float-label class="w-full">
+      <pv-input-text v-model="name_and_lastname" :label="i18n.global.t('login-view.signup-panel.name-lastname')"
+                     type="mail" class="w-12"/>
+      <label slot="label">
+        {{ i18n.global.t('login-view.signup-panel.name-lastname') }}
+      </label>
+    </pv-float-label>
+  </div>
 
-      </div>
-      <div class="card flex justify-content-center">
-        <FloatLabel>
-          <InputText id="Names" v-model="value" />
-          <label for="Names">Nombres y apellidos del registrante</label>
-        </FloatLabel>
+  <div>
+    <pv-float-label class="w-full">
+      <pv-password v-model="password" :label="i18n.global.t('login-view.signup-panel.password')" type="password"
+                   toggleMask :feedback="false" class="w-full"/>
+      <label slot="label">
+        {{ i18n.global.t('login-view.signup-panel.password') }}
+      </label>
+    </pv-float-label>
+  </div>
 
-      </div>
-      <div class="card flex justify-content-center">
-        <FloatLabel>
-          <InputText id="passwordRegister" v-model="value" />
-          <label for="passwordRegister">Contraseña del registrante</label>
-        </FloatLabel>
+  <div class="mt-4">
+    <pv-checkbox v-model="terms" aria-label="Terms and conditions" id="terms-and-conditions" binary/>
+    <label for="terms-and-conditions" class="ml-2">
+      {{ i18n.global.t('login-view.signup-panel.terms.text') }}
+      <a class="text-blue-600">
+        {{ i18n.global.t('login-view.signup-panel.terms.link') }}
+      </a>
+    </label>
+  </div>
 
-      </div>
-
-      <br> <br>
-      Un carácter en mayúsculas y otro en minúsculas
-      <br>- Un número
-      <br>- Un carácter especial
-      <br>- 8 carácteres mínimo
-
-
-      <div class="col-100 col-md-1">
-        <div class="flex flex-row align-items-center">
-          <pv-checkbox class="mr-2" v-model="AceptTerm" binary/>
-
-          <p>
-            <strong class="text-1 mb-1 mr-4">
-              {{ $t('He leído y acepto los términos y condiciones y politicas de privacidad') }}
-            </strong>
-          </p>
-        </div>
-      </div>
-      <Button label= "register" class="flex-" />
-
-
-    </template>
-    <template #footer>
-      <div class="flex gap-3 mt-1">
-
-      </div>
-    </template>
-  </pv-card>
-
-
-
+  <div class="mt-4 text-center align-content-center">
+    <pv-button class="w-10 border-round-3xl" :label="i18n.global.t('login-view.signup-panel.signup')"/>
+  </div>
 </template>
 
-<style >
+<style>
 
 </style>

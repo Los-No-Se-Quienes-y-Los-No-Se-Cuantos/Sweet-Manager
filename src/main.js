@@ -39,6 +39,9 @@ import TabPanel from "primevue/tabpanel";
 import Panel from "primevue/panel";
 import Avatar from "primevue/avatar";
 import Divider from "primevue/divider";
+import SelectButton from "primevue/selectbutton";
+import CountryFlagEsm from "vue-country-flag-next";
+import Password from "primevue/password";
 
 // PrimeIcons
 import 'primeicons/primeicons.css';
@@ -55,8 +58,6 @@ import i18n from "./i18n.js";
 
 // Router
 import router from "./router/index.js";
-import SelectButton from "primevue/selectbutton";
-import CountryFlagEsm from "vue-country-flag-next";
 
 const app = createApp(App);
 
@@ -98,6 +99,7 @@ app
     .component('pv-divider', Divider)
     .component('pv-chart', Chart)
     .component('pv-flag', CountryFlagEsm)
+    .component('pv-password', Password)
 
 // Add i18n plugin
 app.use(i18n);

@@ -5,7 +5,7 @@ export default {
   props: {
     is_user: {
       type: Boolean,
-      default: false,
+      default: true,
     }
   },
   data() {
