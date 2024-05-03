@@ -65,9 +65,6 @@ export default {
 </script>
 
 <template>
-
-  <pv-toast/>
-
   <pv-confirm-dialog/>
   <h3>Manage {{ title.plural }}</h3>
   <!-- Toolbar Section -->
