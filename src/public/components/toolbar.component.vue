@@ -12,18 +12,27 @@ export default {
       items: [
         {label: 'Home', to: '/home'},
       ],
+      user: null,
     }
   },
   created() {
     this.loginService = new LoginService();
+    // if (this.is_logged) {
+    //   this.loginService.getUser(this.getUser.id).then(response => {
+    //     this.user = this.loginService.getUserFromResponse(response.data);
+    //   });
+    // }
   },
   computed: {
-    // getUser() {
-    //   return localStorage.getItem('token');
-    //   // let user = await this.loginService.getLocalUser();
-    //   // console.log(user)
-    //   // return this.loginService.getLocalUserFromResponse(user.data);
-    // },
+    is_logged() {
+      return localStorage.getItem('token') !== null;
+    },
+    getUser() {
+      // return localStorage.getItem('token');
+      let user =  this.loginService.getLocalUser();
+      console.log(user)
+      return this.loginService.getLocalUserFromResponse(user.data);
+    },
   },
   methods: {
     logout() {
@@ -34,6 +43,24 @@ export default {
       router.push(
           {name: 'profile', params: {id: 1}}
       );
+    },
+    sendToCompany() {
+      router.push(
+          {name: 'company', params: {id: 1}}
+      );
+    },
+    sendToRooms() {
+      router.push(
+          {name: 'rooms', params: {id: 1}}
+      );
+    },
+    sendToSupply() {
+      router.push(
+          {name: 'supply', params: {id: 1}}
+      );
+    },
+    getUser()  {
+
     }
   }
 }
@@ -43,7 +70,7 @@ export default {
   <pv-toolbar class="bg-primary pt-1 pb-1" style="border-radius: 0;">
     <template #start>
       <h2>Sweet Manager</h2>
-      <router-link key="panel" v-slot="{navigate, href}" to="/panel" class="ml-2">
+      <router-link v-if="is_logged" key="panel" v-slot="{navigate, href}" to="/panel" class="ml-2">
         <pv-button :href="href" class="p-button-text text-white" @click="navigate">
           {{ $t('control-panel') }}
         </pv-button>
@@ -55,10 +82,22 @@ export default {
     </template>
 
     <template #end>
-      <div class="flex-column">
+      <div class="flex-column" v-if="is_logged">
+
+        <pv-button  class="p-button-text text-white" @click="sendToRooms()">
+          Rooms
+        </pv-button>
+
+        <pv-button  class="p-button-text text-white" @click="sendToSupply()">
+          Supply
+        </pv-button>
+
+        <pv-button  class="p-button-text text-white" @click="sendToCompany()">
+          My Company
+        </pv-button>
 
         <pv-button  class="p-button-text text-white" @click="sendToProfile()">
-          Ola just test
+          My Profile
         </pv-button>
       </div>
     </template>

@@ -12,8 +12,6 @@ export default {
   },
   created() {
     const id = this.$route.params.id;
-    console.log(id);
-    console.log("olaaaa");
     this.loginService = new LoginService();
     this.loginService.getUser(id).then(response => {
       this.user = this.loginService.getUserFromResponse(response.data);
