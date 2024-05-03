@@ -38,7 +38,8 @@ export default {
           let user = users.data.find(user => user.email === this.email && user.password === this.password);
           if (user) {
             localStorage.setItem('token', user.id);
-            this.$router.push('/panel')
+          //   reload page
+            window.location.reload();
           } else {
             this.$toast.add({
               severity: 'error',

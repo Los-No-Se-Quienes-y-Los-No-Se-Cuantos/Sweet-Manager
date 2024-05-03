@@ -29,7 +29,7 @@ export default {
     },
     getUser() {
       // return localStorage.getItem('token');
-      let user =  this.loginService.getLocalUser();
+      let user = this.loginService.getLocalUser();
       console.log(user)
       return this.loginService.getLocalUserFromResponse(user.data);
     },
@@ -59,7 +59,7 @@ export default {
           {name: 'supply', params: {id: 1}}
       );
     },
-    getUser()  {
+    getUser() {
 
     }
   }
@@ -69,7 +69,11 @@ export default {
 <template>
   <pv-toolbar class="bg-primary pt-1 pb-1" style="border-radius: 0;">
     <template #start>
-      <h2>Sweet Manager</h2>
+      <router-link v-if="is_logged" key="/" v-slot="{navigate, href}" to="/" class="ml-2">
+        <pv-button :href="href" class="p-button-text text-white" @click="navigate">
+          <h2> Sweet Manager</h2>
+        </pv-button>
+      </router-link>
       <router-link v-if="is_logged" key="panel" v-slot="{navigate, href}" to="/panel" class="ml-2">
         <pv-button :href="href" class="p-button-text text-white" @click="navigate">
           {{ $t('control-panel') }}
@@ -84,19 +88,19 @@ export default {
     <template #end>
       <div class="flex-column" v-if="is_logged">
 
-        <pv-button  class="p-button-text text-white" @click="sendToRooms()">
+        <pv-button class="p-button-text text-white" @click="sendToRooms()">
           Rooms
         </pv-button>
 
-        <pv-button  class="p-button-text text-white" @click="sendToSupply()">
+        <pv-button class="p-button-text text-white" @click="sendToSupply()">
           Supply
         </pv-button>
 
-        <pv-button  class="p-button-text text-white" @click="sendToCompany()">
+        <pv-button class="p-button-text text-white" @click="sendToCompany()">
           My Company
         </pv-button>
 
-        <pv-button  class="p-button-text text-white" @click="sendToProfile()">
+        <pv-button class="p-button-text text-white" @click="sendToProfile()">
           My Profile
         </pv-button>
       </div>
