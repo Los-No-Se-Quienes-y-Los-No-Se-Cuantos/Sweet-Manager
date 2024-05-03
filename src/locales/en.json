@@ -1,4 +1,9 @@
 {
+  "login-view": {
+    "title": "Welcome to Sweet Manager",
+    "login": "Login",
+    "signup": "Sign up company"
+  },
   "profile": {
     "view": {
       "title": "My Profile",
@@ -65,7 +70,7 @@
       "12": "December"
     },
     "monthly": {
-      "title":"Monthly chart of income",
+      "title": "Monthly chart of income",
       "type": "Monthly income"
     },
     "monthly-income-expense": {

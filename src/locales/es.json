@@ -1,4 +1,8 @@
 {
+  "login-view": {
+    "login": "Login",
+    "signup": "Sign Up"
+  },
   "profile": {
     "view": {
       "title": "Mi Perfil",

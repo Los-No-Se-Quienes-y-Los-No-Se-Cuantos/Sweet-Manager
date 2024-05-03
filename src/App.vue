@@ -9,17 +9,25 @@ export default {
 </script>
 
 <template>
-<!--  <pv-toast/>-->
+  <pv-toast/>
   <header>
     <toolbar-component/>
   </header>
-<!--  <router-view/>-->
+  <div class="container">
+    <router-view class="router-view" />
+  </div>
+
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 90.6vh;
+}
 
-:root {
-  margin: 0;
-  padding: 0;
+.router-view {
+  flex: 1;
+  overflow-y: auto;
 }
 </style>

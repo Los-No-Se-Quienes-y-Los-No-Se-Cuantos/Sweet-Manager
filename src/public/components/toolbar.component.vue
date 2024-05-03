@@ -8,7 +8,7 @@ export default {
     return {
       drawer: false,
       items: [
-        {label: 'Home', to: '/home'},
+        // {label: 'Home', to: '/home'},
       ],
     }
   }
