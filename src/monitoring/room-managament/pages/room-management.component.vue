@@ -175,17 +175,37 @@ export default {
         v-on:new-item="onNewItemEventHandler"
         v-on:edit-item="onEditItemEventHandler($event)">
       <template #custom-columns>
-        <pv-column :sortable="true" field="id"              header="Id"              style="min-width: 12rem"/>
-        <pv-column :sortable="true" field="name"            header="Name"            style="min-width: 16rem"/>
+
+        <pv-column :sortable="true" field="id" style="min-width: 12rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.id") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="name" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.name") }}
+          </template>
+        </pv-column>
         <pv-column :sortable="true" field="description"     header="Description"     style="min-width: 16rem; display:none"/>
         <pv-column :sortable="true" field="price"           header="Price"           style="min-width: 16rem; display:none"/>
-        <pv-column :sortable="true" field="worker"          header="Worker"          style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="client"          header="Client"          style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="worker" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.worker") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="client" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.client") }}
+          </template>
+        </pv-column>
         <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem; display:none"/>
         <pv-column :sortable="true" field="totalBathrooms"  header="TotalBathrooms"  style="min-width: 16rem; display:none"/>
         <pv-column :sortable="true" field="totalTelevision" header="TotalTelevision" style="min-width: 16rem; display:none"/>
         <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem; display:none"/>
-        <pv-column :sortable="true" field="status"          header="Status"          style="min-width: 16rem">
+        <pv-column :sortable="true" field="status" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.status") }}
+          </template>
           <template #body="slotProps">
             <pv-tag :severity="getSeverity(slotProps.data.status)" :value="slotProps.data.status"/>
           </template>

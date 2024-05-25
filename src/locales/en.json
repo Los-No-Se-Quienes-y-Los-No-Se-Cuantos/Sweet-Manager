@@ -103,5 +103,19 @@
         "expense": "Expenses"
       }
     }
+  },
+  "rooms-monitoring": {
+    "view": {
+      "id": "ide",
+      "name": "name",
+      "description": "description",
+      "worker": "worker",
+      "client": "client",
+      "totalbeds": "TotalBeds",
+      "totalbathrooms": "TotalBathrooms",
+      "totaltelevision": "TotalTelevision",
+      "status": "status",
+      "title": "Manage rooms"
+    }
   }
 }

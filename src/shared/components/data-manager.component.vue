@@ -46,33 +46,20 @@ export default {
     editItem(item) {
       this.$emit('edit-item', item);
     },
-    confirmDeleteItem(item) {
-
-      this.$confirm.require({
-        message:          `Are you sure you want to delete this ${this.title.singular}?`,
-        header:           'Confirmation',
-        icon:             'pi pi-exclamation-triangle',
-        rejectClassName:  'p-button-secondary p-button-outlined',
-        rejectLabel:      'Cancel',
-        acceptLabel:      'Delete',
-        acceptClassName:  'p-button-danger',
-        accept:           () => this.$emit('delete-item', item),
-        reject:           () => {}
-      });
-    }
   }
 }
 </script>
 
 <template>
+
+  <pv-toast/>
+
   <pv-confirm-dialog/>
-  <h3>Manage {{ title.plural }}</h3>
+  <h3 class="text-center">{{ $t('rooms-monitoring.view.title') }}</h3>
   <!-- Toolbar Section -->
   <pv-toolbar class="mb-4">
     <template #start>
       <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
-      <pv-button :disabled="!selectedItems || !selectedItems.length" icon="pi pi-trash" label="Delete" severity="danger"
-                 @click="confirmDeleteSelected"/>
     </template>
     <template #end>
       <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>
@@ -97,7 +84,6 @@ export default {
     <pv-column :exportable="false" style="min-width:8rem">
       <template #body="slotProps">
         <pv-button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editItem(slotProps.data)"/>
-        <pv-button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteItem(slotProps.data)"/>
       </template>
     </pv-column>
   </pv-data-table>
