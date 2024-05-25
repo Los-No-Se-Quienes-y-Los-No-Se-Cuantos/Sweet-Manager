@@ -9,14 +9,15 @@ export default {
   components: {SupplyItemCreateAndEditDialog, DataManager},
   data(){
     return {
-      title: { singular: 'Supply', plural: 'Supplies' },
+      title: {singular: 'Supply', plural: 'Supplies'},
       supplies: [],
-      supply: { },
+      supply: {},
       selectedSupplies: [],
       supplyControlService: null,
       createAndEditDialogIsVisible: false,
       isEdit: false,
-      submitted: false
+      submitted: false,
+      searchValue: ''
     }
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
 
     //#region Data Manager Event Handlers
     onNewItemEventHandler() {
-      this.supply = { };
+      this.supply = {};
       this.submitted = false;
       this.isEdit = false;
       this.createAndEditDialogIsVisible = true;
@@ -59,7 +60,7 @@ export default {
     },
     onSavedEventHandler(item) {
       this.submitted = true;
-      if (this.supply.product.trim()) {
+      if (this.validateForm()) {
         if (item.id) {
           this.updateSupply();
         } else {
@@ -68,6 +69,15 @@ export default {
       }
       this.createAndEditDialogIsVisible = false;
       this.isEdit = false;
+    },
+
+    handleError(error) {
+      this.$toast.add({
+        severity: "error",
+        summary: "Error",
+        detail: error.message,
+        life: 3000,
+      });
     },
 
     //#region Data Actions
@@ -81,7 +91,8 @@ export default {
             this.supply = Supply.toDisplayableSupply(response.data);
             this.supplies.push(this.supply);
             this.notifySuccessfulAction("Supply Created");
-          });
+          })
+          .catch(this.handleError);
     },
     // Update an existing item
     updateSupply() {
@@ -90,12 +101,11 @@ export default {
       this.supplyControlService
           .update(this.supply.id, this.supply)
           .then((response) => {
-
             this.supplies[this.findIndexById(response.data.id)] =
                 Supply.toDisplayableSupply(response.data);
-
             this.notifySuccessfulAction("Supply Updated");
-          });
+          })
+          .catch(this.handleError);
     },
     // Delete a item
     deleteSupply() {
@@ -107,7 +117,6 @@ export default {
             this.notifySuccessfulAction("Supply Deleted");
           });
     },
-
     // Delete selected tutorials
     deleteSelectedSupplies() {
       this.selectedSupplies.forEach((supply) => {
@@ -117,7 +126,31 @@ export default {
       });
 
       this.notifySuccessfulAction("Supplies Deleted");
-    }
+    },
+    search() {
+      if (this.searchValue) {
+        this.supplies = this.supplies.filter(supply =>
+            supply.product.toLowerCase().includes(this.searchValue.toLowerCase()) ||
+            supply.id.toString().includes(this.searchValue)
+        );
+      } else {
+        this.supplyControlService.getAll().then((response) => {
+          this.supplies = response.data.map((supply) => Supply.toDisplayableSupply(supply));
+        });
+      }
+    },
+    validateForm() {
+      if (
+          !(this.supply.product && this.supply.product.trim()) ||
+          !this.supply.quantity ||
+          !(this.supply.address && this.supply.address.trim()) ||
+          !(this.supply.expire && this.supply.expire.trim())
+      ) {
+        this.$toast.add({severity: "warn", summary: "Warning", detail: "All fields must be filled", life: 3000,});
+        return false;
+      }
+      return true;
+    },
   },
   created() {
     this.supplyControlService = new SupplyControlApiService();
@@ -133,27 +166,32 @@ export default {
   <div class="w-full">
     <!-- Tutorial Data Manager -->
     <data-manager
-      :title=title
-      v-bind:items="supplies"
-      v-on:new-item="onNewItemEventHandler"
-      v-on:edit-item="onEditItemEventHandler($event)"
-      v-on:delete-item="onDeleteItemEventHandler($event)"
-      v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
+        :title=title
+        v-bind:items="supplies"
+        v-on:new-item="onNewItemEventHandler"
+        v-on:edit-item="onEditItemEventHandler($event)"
+        v-on:delete-item="onDeleteItemEventHandler($event)"
+        v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
       <template #custom-columns>
-        <pv-column :sortable="true" field="id" header="Id" style="min-width: 12rem"/>
-        <pv-column :sortable="true" field="product" header="Product" style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="quantity" header="Quantity" style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="address" header="Address" style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="expire" header="Expiration Date" style="min-width: 16rem"/>
+        <div class="search">
+          <input type="text" v-model="searchValue" @input="search" placeholder="Search...">
+        </div>
+        <div class="table-responsive">
+          <pv-column :sortable="true" field="id" header="Id" style="min-width: 12rem"/>
+          <pv-column :sortable="true" field="product" header="Product" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="quantity" header="Quantity" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="address" header="Address" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="expire" header="Expiration Date" style="min-width: 16rem"/>
+        </div>
       </template>
     </data-manager>
     <!-- Tutorial Item Create and Edit Dialog -->
     <supply-item-create-and-edit-dialog
-      :item="supply"
-      :edit="isEdit"
-      :visible="createAndEditDialogIsVisible"
-      v-on:canceled="onCanceledEventHandler"
-      v-on:saved="onSavedEventHandler($event)"/>
+        :item="supply"
+        :edit="isEdit"
+        :visible="createAndEditDialogIsVisible"
+        v-on:canceled="onCanceledEventHandler"
+        v-on:saved="onSavedEventHandler($event)"/>
 
   </div>
 </template>
@@ -163,6 +201,22 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.table-responsive {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: auto;
+  overflow-x: auto;
+}
+
+.search {
+  display: flex;
+  height: 2rem;
+  width: 100%;
+  margin-left: 10px;
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 960px) {
