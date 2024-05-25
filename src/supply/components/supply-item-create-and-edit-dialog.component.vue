@@ -17,8 +17,7 @@ export default {
     canceledEventHandler() {
       this.$emit('canceled');
     },
-    savedEventHandler() {
-    }
+    savedEventHandler() {}
   }
 }
 </script>
@@ -55,8 +54,8 @@ export default {
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="expire">Expiration date</label>
-            <pv-input-text id="expire" v-model="item.expire" :class="{'p-invalid': submitted && !item.expire}"/>
+            <label for="expire"></label>
+            <pv-input-text id="expire" type="date" v-model="item.expire" :class="{'p-invalid': submitted && !item.expire}"/>
             <small v-if="submitted && !item.expire" class="p-invalid">Expiration date is required.</small>
           </pv-float-label>
         </div>
