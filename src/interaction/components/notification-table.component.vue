@@ -25,7 +25,10 @@ export default {
     },
     fixedColumnHeader(header) {
       let fixedHeader = header.replace(/([A-Z])/g, ' $1');
-      return fixedHeader.charAt(0).toUpperCase() + fixedHeader.slice(1);
+
+      fixedHeader = fixedHeader.charAt(0).toLowerCase() + fixedHeader.slice(1);
+
+      return fixedHeader;
     }
   }
 }
@@ -44,7 +47,7 @@ export default {
   >
     <template #header>
       <p class="font-bold text-center text-xl text-primary mb-0 pb-0">
-        Notifications
+        {{ $t("interaction.notifications.title")}}
       </p>
       <div class="flex flex-wrap align-items-center justify-content-between gap-2 text-center">
         <pv-button icon="pi pi-refresh" rounded raised/>
@@ -56,7 +59,7 @@ export default {
                 sortable>
       <template #header>
         <div class="w-full text-center font-bold h-auto bg-primary d-flex align-items-stretch">
-          {{fixedColumnHeader(column)}}
+          {{ $t("interaction.notifications.headers." + fixedColumnHeader(column)) }}
         </div>
       </template>
     </pv-column>

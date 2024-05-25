@@ -2,9 +2,10 @@
 import {NotificationsApiService} from "../services/notifications-api.service.js";
 import {Notification} from "../models/notification.entity.js";
 import NotificationTableComponent from "../components/notification-table.component.vue";
+import NotificationTable from "../components/notification-table.component.vue";
 export default {
   name: "notification-management",
-  components: {NotificationTableComponent},
+  components: {NotificationTable, NotificationTableComponent},
   data(){
     return {
       notifications: [],
