@@ -33,12 +33,12 @@ export default {
     confirmDeleteItem(item) {
 
       this.$confirm.require({
-        message:          `Are you sure you want to delete this ${this.title.singular}?`,
-        header:           'Confirmation',
+        message:          this.$t('actions.confirm-delete'),
+        header:           this.$t('actions.confirmation'),
         icon:             'pi pi-exclamation-triangle',
         rejectClassName:  'p-button-secondary p-button-outlined',
-        rejectLabel:      'Cancel',
-        acceptLabel:      'Delete',
+        rejectLabel:      this.$t('actions.cancel'),
+        acceptLabel:      this.$t('actions.delete'),
         acceptClassName:  'p-button-danger',
         accept:           () => this.$emit('delete-item', item),
         reject:           () => {}
@@ -51,13 +51,13 @@ export default {
 <template>
   <pv-confirm-dialog/>
   <div class="title">
-    <p>Control Panel</p>
-    <h1>Manage {{ title.plural }}</h1>
+    <p>{{$t('control-panel')}}</p>
+    <h1>{{$t('manage-supplies')}}</h1>
   </div>
   <!-- Toolbar Section -->
   <pv-toolbar class="mb-4">
     <template #start>
-      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
+      <pv-button class="mr-2" icon="pi pi-plus" :label="$t('actions.new')" severity="success" @click="newItem"/>
     </template>
   </pv-toolbar>
 

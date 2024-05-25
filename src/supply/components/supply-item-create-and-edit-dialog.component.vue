@@ -17,38 +17,40 @@ export default {
     canceledEventHandler() {
       this.$emit('canceled');
     },
-    savedEventHandler() {}
+    savedEventHandler() {
+
+    }
   }
 }
 </script>
 
 <template>
-  <create-and-edit :entity="item" :visible="visible" entityName="Supplies" @canceled="canceledEventHandler"
+  <create-and-edit :entity="item" :visible="visible" :entityName="$t('supply.title')" @canceled="canceledEventHandler"
                    @saved="savedEventHandler">
     <template #content>
       <div class="p-fluid">
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="product">Product</label>
+            <label for="product">{{ $t('supply.product') }}</label>
             <pv-input-text id="product" v-model="item.product" :class="{'p-invalid': submitted && !item.product}"/>
-            <small v-if="submitted && !item.product" class="p-invalid">Product title is required.</small>
+            <small v-if="submitted && !item.product" class="p-invalid">{{$t('supply.product-required')}}</small>
           </pv-float-label>
         </div>
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="quantity">Quantity</label>
+            <label for="quantity">{{ $t('supply.quantity') }}</label>
             <pv-input-text id="quantity" v-model="item.quantity" :class="{'p-invalid': submitted && !item.quantity}"/>
-            <small v-if="submitted && !item.quantity" class="p-invalid">Quantity is required.</small>
+            <small v-if="submitted && !item.quantity" class="p-invalid">{{$t('supply.quantity-required')}}</small>
           </pv-float-label>
         </div>
 
         <div class="field mt-5">
           <pv-float-label>
-            <label for="address">Address</label>
+            <label for="address">{{$t('supply.address')}}</label>
             <pv-input-text id="address" v-model="item.address" :class="{'p-invalid': submitted && !item.address}"/>
-            <small v-if="submitted && !item.address" class="p-invalid">Address is required.</small>
+            <small v-if="submitted && !item.address" class="p-invalid">{{$t('supply.address-required')}}</small>
           </pv-float-label>
         </div>
 
@@ -56,7 +58,7 @@ export default {
           <pv-float-label>
             <label for="expire"></label>
             <pv-input-text id="expire" type="date" v-model="item.expire" :class="{'p-invalid': submitted && !item.expire}"/>
-            <small v-if="submitted && !item.expire" class="p-invalid">Expiration date is required.</small>
+            <small v-if="submitted && !item.expire" class="p-invalid">{{$t('supply.expire-required')}}</small>
           </pv-float-label>
         </div>
 

@@ -23,7 +23,7 @@ export default {
   methods: {
     //#region Helper Methods
     notifySuccessfulAction(message) {
-      this.$toast.add({severity: "success", summary: "Success", detail: message, life: 3000,});
+      this.$toast.add({severity: "success", summary: this.$t('notifSupply.success') , detail: message, life: 3000,});
     },
     findIndexById(id) {
       return this.supplies.findIndex((supply) => supply.id === id);
@@ -45,10 +45,6 @@ export default {
     onDeleteItemEventHandler(item) {
       this.supply = item;
       this.deleteSupply();
-    },
-    onDeleteSelectedItemsEventHandler(selectedItems) {
-      this.selectedSupplies = selectedItems;
-      this.deleteSelectedSupplies();
     },
 
 
@@ -90,7 +86,7 @@ export default {
 
             this.supply = Supply.toDisplayableSupply(response.data);
             this.supplies.push(this.supply);
-            this.notifySuccessfulAction("Supply Created");
+            this.notifySuccessfulAction(this.$t('notifSupply.created'));
           })
           .catch(this.handleError);
     },
@@ -103,7 +99,7 @@ export default {
           .then((response) => {
             this.supplies[this.findIndexById(response.data.id)] =
                 Supply.toDisplayableSupply(response.data);
-            this.notifySuccessfulAction("Supply Updated");
+            this.notifySuccessfulAction(this.$t('notifSupply.updated'));
           })
           .catch(this.handleError);
     },
@@ -114,19 +110,10 @@ export default {
             this.supplies = this.supplies.filter((s) => s.id !== this.supply.id);
             this.supply = {};
 
-            this.notifySuccessfulAction("Supply Deleted");
+            this.notifySuccessfulAction(this.$t('notifSupply.deleted'));
           });
     },
-    // Delete selected tutorials
-    deleteSelectedSupplies() {
-      this.selectedSupplies.forEach((supply) => {
-        this.supplyControlService.delete(supply.id).then(() => {
-          this.supplies = this.supplies.filter((s) => s.id !== this.supply.id);
-        });
-      });
-
-      this.notifySuccessfulAction("Supplies Deleted");
-    },
+    // Search function
     search() {
       if (this.searchValue) {
         this.supplies = this.supplies.filter(supply =>
@@ -139,6 +126,7 @@ export default {
         });
       }
     },
+    // Validate information
     validateForm() {
       if (
           !(this.supply.product && this.supply.product.trim()) ||
@@ -146,7 +134,7 @@ export default {
           !(this.supply.address && this.supply.address.trim()) ||
           !(this.supply.expire && this.supply.expire.trim())
       ) {
-        this.$toast.add({severity: "warn", summary: "Warning", detail: "All fields must be filled", life: 3000,});
+        this.$toast.add({severity: "warn", summary: this.$t('notifSupply.warning'), detail: this.$t('notifSupply.fields-required'), life: 3000,});
         return false;
       }
       return true;
@@ -170,18 +158,17 @@ export default {
         v-bind:items="supplies"
         v-on:new-item="onNewItemEventHandler"
         v-on:edit-item="onEditItemEventHandler($event)"
-        v-on:delete-item="onDeleteItemEventHandler($event)"
-        v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
+        v-on:delete-item="onDeleteItemEventHandler($event)">
       <template #custom-columns>
         <div class="search">
-          <input type="text" v-model="searchValue" @input="search" placeholder="Search...">
+          <input type="text" v-model="searchValue" @input="search" :placeholder="$t('supply.search')">
         </div>
         <div class="table-responsive">
-          <pv-column :sortable="true" field="id" header="Id" style="min-width: 12rem"/>
-          <pv-column :sortable="true" field="product" header="Product" style="min-width: 16rem"/>
-          <pv-column :sortable="true" field="quantity" header="Quantity" style="min-width: 16rem"/>
-          <pv-column :sortable="true" field="address" header="Address" style="min-width: 16rem"/>
-          <pv-column :sortable="true" field="expire" header="Expiration Date" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="id" header="ID" style="min-width: 12rem"/>
+          <pv-column :sortable="true" field="product" :header="$t('supply.product')" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="quantity" :header="$t('supply.quantity')" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="address" :header="$t('supply.address')" style="min-width: 16rem"/>
+          <pv-column :sortable="true" field="expire" :header="$t('supply.expire')" style="min-width: 16rem"/>
         </div>
       </template>
     </data-manager>
