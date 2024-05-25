@@ -103,5 +103,16 @@
         "expense": "Gastos"
       }
     }
+  },
+  "interaction": {
+    "notifications": {
+      "title": "Notificaciones",
+      "headers": {
+        "id": "Código",
+        "title": "Título",
+        "message": "Mensaje",
+        "date": "Fecha"
+      }
+    }
   }
 }

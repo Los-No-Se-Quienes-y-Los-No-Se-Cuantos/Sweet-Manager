@@ -103,5 +103,16 @@
         "expense": "Expenses"
       }
     }
+  },
+  "interaction": {
+    "notifications": {
+      "title": "Notifications",
+      "headers": {
+        "id": "ID",
+        "title": "Title",
+        "message": "Message",
+        "date": "Date"
+      }
+    }
   }
 }
