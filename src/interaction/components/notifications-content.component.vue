@@ -20,7 +20,7 @@ export default {
      initConfiguration() {
       this.notificationsApi.getNotifications().then(response => {
         this.columnsDefined = ['id', 'title', 'message', 'date'];
-        this.notifications = this.buildNotificationsListFromResponse(response)
+        this.notifications = this.buildNotificationsListFromResponse(response.data)
       });
     },
 
