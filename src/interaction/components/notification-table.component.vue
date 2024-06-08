@@ -25,7 +25,10 @@ export default {
     },
     fixedColumnHeader(header) {
       let fixedHeader = header.replace(/([A-Z])/g, ' $1');
-      return fixedHeader.charAt(0).toUpperCase() + fixedHeader.slice(1);
+
+      fixedHeader = fixedHeader.charAt(0).toLowerCase() + fixedHeader.slice(1);
+
+      return fixedHeader;
     }
   }
 }
@@ -43,15 +46,23 @@ export default {
       tableStyle="min-width: 50rem"
   >
     <template #header>
-      <div class="flex flex-wrap align-items-center justify-content-between gap-2">
-        <span class="text-xl text-900 font-bold">Notifications</span>
+      <p class="font-bold text-center text-xl text-primary mb-0 pb-0">
+        {{ $t("interaction.notifications.title")}}
+      </p>
+      <div class="flex flex-wrap align-items-center justify-content-between gap-2 text-center">
         <pv-button icon="pi pi-refresh" rounded raised/>
       </div>
     </template>
     <pv-column v-for="column in columns"
                :field="column"
-                :key="column"
-               :header="fixedColumnHeader(column)" sortable></pv-column>
+               :key="column"
+                sortable>
+      <template #header>
+        <div class="w-full text-center font-bold h-auto bg-primary d-flex align-items-stretch">
+          {{ $t("interaction.notifications.headers." + fixedColumnHeader(column)) }}
+        </div>
+      </template>
+    </pv-column>
     <slot name="notification-columns"></slot>
     <template #footer>En total hay {{ items ? items.length : 0 }}</template>
   </pv-data-table>

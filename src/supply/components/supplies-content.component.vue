@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-    <supply-management title="Supplies"/>
+    <supply-management :title="$t('supply.title')"/>
 </template>

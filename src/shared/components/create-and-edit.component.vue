@@ -13,10 +13,10 @@ export default {
       this.$emit('saved', this.entity);
     },
     getHeaderTitle() {
-      return `${this.edit ? 'Edit' : 'New'} ${this.entityName}`;
+      return `${this.edit ? this.$t('actions.edit') : this.$t('actions.new')} ${this.entityName}`;
     },
     getSubmitLabel() {
-      return this.edit ? 'Update' : 'Create';
+      return this.edit ? this.$t('actions.update') : this.$t('actions.create');
     },
     getDialogStyle() {
       let dialogStyle = defaultStyle;
@@ -42,7 +42,7 @@ export default {
     <template #footer>
       <div class="flex justify-content-end">
         <pv-button type="button" :label="getSubmitLabel()" class="p-button-text" icon="pi pi-check" @click="onSave"/>
-        <pv-button type="button" label="Cancel" severity="secondary" class="p-button-text" icon="pi pi-times" @click="onCancel"/>
+        <pv-button type="button" :label="$t('actions.cancel')" severity="secondary" class="p-button-text" icon="pi pi-times" @click="onCancel"/>
       </div>
     </template>
   </pv-dialog>
