@@ -53,16 +53,16 @@ export default {
   <pv-toast/>
 
   <pv-confirm-dialog/>
-ola
-  <h3 class="text-center">{{ $t('rooms-monitoring.view.title') }}</h3>
-  <!-- Toolbar Section -->
-  <pv-toolbar class="mb-4">
-    <template #start>
-      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
-    </template>
-    <template #end>
-      <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>
-ola
+<!--ola-->
+<!--  <h3 class="text-center">{{ $t('rooms-monitoring.view.title') }}</h3>-->
+<!--  &lt;!&ndash; Toolbar Section &ndash;&gt;-->
+<!--  <pv-toolbar class="mb-4">-->
+<!--    <template #start>-->
+<!--      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>-->
+<!--    </template>-->
+<!--    <template #end>-->
+<!--      <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>-->
+<!--ola-->
   <div class="title">
     <p>{{$t('control-panel')}}</p>
     <h1>{{$t('manage-supplies')}}</h1>

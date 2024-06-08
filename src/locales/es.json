@@ -12,7 +12,7 @@
       "password": "Contraseña",
       "remember": "Recuerdame",
       "login": "Iniciar Sesion",
-        "forgot": "Olvidaste tu contraseña?"
+      "forgot": "Olvidaste tu contraseña?"
     },
     "signup-panel": {
       "company-name": "Razón social de la empresa",
@@ -116,7 +116,8 @@
       "totaltelevision": "TotalTelevisores",
       "status": "stado",
       "title": "Gestion de habitaciones"
-    },
+    }
+  },
   "interaction": {
     "notifications": {
       "title": "Notificaciones",
@@ -127,6 +128,15 @@
         "date": "Fecha"
       }
     },
+    "notifSupply": {
+      "success": "¡Exito!",
+      "created": "Inventario creado",
+      "updated": "Inventario actualizado",
+      "deleted": "Inventario eliminado",
+      "warning": "¡Advertencia!",
+      "fields-required": "Se requieren todos los campos"
+    }
+  },
   "actions": {
     "edit": "Editar",
     "new": "Añadir",
@@ -136,14 +146,6 @@
     "delete": "Eliminar",
     "confirm-delete": "¿Estás seguro de que deseas eliminar este elemento?",
     "confirmation": "¿Confirmar accion?"
-  },
-  "notifSupply": {
-    "success": "¡Exito!",
-    "created": "Inventario creado",
-    "updated": "Inventario actualizado",
-    "deleted": "Inventario eliminado",
-    "warning": "¡Advertencia!",
-    "fields-required": "Se requieren todos los campos"
   },
   "manage-supplies": "Control de Inventarios",
   "supply": {
