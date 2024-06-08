@@ -46,7 +46,7 @@ export default {
         <div class="field mt-5">
           <pv-float-label>
             <label for="name">Name</label>
-            <pv-input-text id="name" v-model="item.name" :class="{'p-invalid': submitted && !item.name}"/>
+            <pv-input-text id="name" v-model="item.name" :class="{'p-invalid': submitted && !item.name}" required/>
             <small v-if="submitted && !item.name" class="p-invalid">Name is required.</small>
           </pv-float-label>
         </div>
@@ -54,7 +54,7 @@ export default {
         <div class="field mt-5">
           <pv-float-label>
             <label for="description">Description</label>
-            <pv-input-text id="description" v-model="item.description" :class="{'p-invalid': submitted && !item.description}"/>
+            <pv-input-text id="description" v-model="item.description" :class="{'p-invalid': submitted && !item.description}" required />
             <small v-if="submitted && !item.description" class="p-invalid">Description is required.</small>
           </pv-float-label>
         </div>
@@ -62,42 +62,42 @@ export default {
         <div class="field mt-5">
           <pv-float-label>
             <label for="price">Price</label>
-            <pv-input-text id="price" v-model="item.price" :class="{'p-invalid': submitted && !item.price}"/>
+            <pv-input-number id="price" v-model="item.price" :class="{'p-invalid': submitted && !item.price}" required />
             <small v-if="submitted && !item.price" class="p-invalid">Price is required.</small>
           </pv-float-label>
         </div>
         <div class="field mt-5">
           <pv-float-label>
             <label for="worker">Worker</label>
-            <pv-input-text id="worker" v-model="item.worker" :class="{'p-invalid': submitted && !item.worker}"/>
+            <pv-input-text id="worker" v-model="item.worker" :class="{'p-invalid': submitted && !item.worker}" required />
             <small v-if="submitted && !item.worker" class="p-invalid">Worker is required.</small>
           </pv-float-label>
         </div>
         <div class="field mt-5">
           <pv-float-label>
             <label for="client">Client</label>
-            <pv-input-text id="client" v-model="item.client" :class="{'p-invalid': submitted && !item.client}"/>
+            <pv-input-text id="client" v-model="item.client" :class="{'p-invalid': submitted && !item.client}" required />
             <small v-if="submitted && !item.client" class="p-invalid">Client is required.</small>
           </pv-float-label>
         </div>
         <div class="field mt-5">
           <pv-float-label>
             <label for="totalBeds">Total Beds</label>
-            <pv-input-text id="totalBeds" v-model="item.totalBeds" :class="{'p-invalid': submitted && !item.totalBeds}"/>
+            <pv-input-number id="totalBeds" v-model="item.totalBeds" :class="{'p-invalid': submitted && !item.totalBeds}" required />
             <small v-if="submitted && !item.totalBeds" class="p-invalid">Total Beds is required.</small>
           </pv-float-label>
         </div>
         <div class="field mt-5">
           <pv-float-label>
             <label for="totalBathrooms">Total Bathrooms</label>
-            <pv-input-text id="totalBathrooms" v-model="item.totalBathrooms" :class="{'p-invalid': submitted && !item.totalBathrooms}"/>
+            <pv-input-number id="totalBathrooms" v-model="item.totalBathrooms" :class="{'p-invalid': submitted && !item.totalBathrooms}" required />
             <small v-if="submitted && !item.totalBathrooms" class="p-invalid">Total Bathrooms is required.</small>
           </pv-float-label>
         </div>
         <div class="field mt-5">
           <pv-float-label>
             <label for="totalTelevision">Total Television</label>
-            <pv-input-text id="totalTelevision" v-model="item.totalTelevision" :class="{'p-invalid': submitted && !item.totalTelevision}"/>
+            <pv-input-number id="totalTelevision" v-model="item.totalTelevision" :class="{'p-invalid': submitted && !item.totalTelevision}" required />
             <small v-if="submitted && !item.totalTelevision" class="p-invalid">Total Television is required.</small>
           </pv-float-label>
         </div>

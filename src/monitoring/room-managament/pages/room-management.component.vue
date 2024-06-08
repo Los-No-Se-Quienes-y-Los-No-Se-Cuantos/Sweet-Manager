@@ -7,7 +7,7 @@ import DataManager from "../../../shared/components/data-manager.component.vue";
 
 export default {
   name: "room-management",
-  components: {DataManager, RoomItemCreateAndEditDialog},
+  components: {RoomItemCreateAndEditDialog, DataManager},
   data() {
     return {
       title: { singular: 'Room', plural: 'Rooms' },
@@ -22,6 +22,27 @@ export default {
     }
   },
   methods: {
+
+    validateFields(room) {
+      try {
+        if ((room.name !== undefined && room.name.toString().trim() !== '') &&
+            (room.description !== undefined && room.description.toString().trim() !== '') &&
+            (room.price !== undefined) &&
+            (room.worker !== undefined && room.worker.toString().trim() !== '') &&
+            (room.client !== undefined && room.client.toString().trim() !== '') &&
+            (room.totalBeds !== undefined) &&
+            (room.totalBathrooms !== undefined) &&
+            (room.totalTelevision !== undefined) &&
+            (room.status.value !== undefined)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      catch(error) {
+        return false;
+      }
+    },
 
     notifySuccessfulAction(message) {
       this.$toast.add({severity: "success", summary: "Success", detail: message, life: 3000,});
@@ -71,12 +92,17 @@ export default {
 
     onSavedEventHandler(item) {
       this.submitted = true;
-      if (this.room.name.trim()) {
+
+      if (this.validateFields(item) === true && this.room.name.trim()) {
         if (item.id) {
           this.updateRoom();
         } else {
           this.createRoom();
         }
+      }
+      else {
+
+        alert('Enter the data correctly');
       }
       this.createAndEditDialogIsVisible = false;
       this.isEdit = false;
@@ -85,6 +111,7 @@ export default {
     createRoom() {
       this.room.id = 0;
       this.room = Room.fromDisplayableRoom(this.room);
+
       this.roomControlService.create(this.room)
           .then((response) => {
 
@@ -141,31 +168,51 @@ export default {
 
 <template>
   <div class="w-full">
+    <!-- Tutorial Data Manager -->
     <data-manager
         :title=title
         v-bind:items="rooms"
         v-on:new-item="onNewItemEventHandler"
-        v-on:edit-item="onEditItemEventHandler($event)"
-        v-on:delete-item="onDeleteItemEventHandler($event)"
-        v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
+        v-on:edit-item="onEditItemEventHandler($event)">
       <template #custom-columns>
-        <pv-column :sortable="true" field="id"              header="Id"              style="min-width: 12rem"/>
-        <pv-column :sortable="true" field="name"            header="Name"            style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="description"     header="Description"     style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="price"           header="Price"           style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="worker"          header="Worker"          style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="client"          header="Client"          style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="totalBathrooms"  header="TotalBathrooms"  style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="totalTelevision" header="TotalTelevision" style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem"/>
-        <pv-column :sortable="true" field="status"          header="Status"          style="min-width: 16rem">
+
+        <pv-column :sortable="true" field="id" style="min-width: 12rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.id") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="name" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.name") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="description"     header="Description"     style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="price"           header="Price"           style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="worker" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.worker") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="client" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.client") }}
+          </template>
+        </pv-column>
+        <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="totalBathrooms"  header="TotalBathrooms"  style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="totalTelevision" header="TotalTelevision" style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="totalBeds"       header="TotalBeds"       style="min-width: 16rem; display:none"/>
+        <pv-column :sortable="true" field="status" style="min-width: 16rem">
+          <template #header>
+            {{ $t("rooms-monitoring.view.status") }}
+          </template>
           <template #body="slotProps">
             <pv-tag :severity="getSeverity(slotProps.data.status)" :value="slotProps.data.status"/>
           </template>
         </pv-column>
       </template>
     </data-manager>
+    <!-- Tutorial Item Create and Edit Dialog -->
     <room-item-create-and-edit-dialog
         :statuses="statuses"
         :item="room"

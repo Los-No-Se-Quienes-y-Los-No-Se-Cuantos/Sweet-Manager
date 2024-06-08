@@ -49,7 +49,20 @@ export default {
 </script>
 
 <template>
+
+  <pv-toast/>
+
   <pv-confirm-dialog/>
+ola
+  <h3 class="text-center">{{ $t('rooms-monitoring.view.title') }}</h3>
+  <!-- Toolbar Section -->
+  <pv-toolbar class="mb-4">
+    <template #start>
+      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
+    </template>
+    <template #end>
+      <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>
+ola
   <div class="title">
     <p>{{$t('control-panel')}}</p>
     <h1>{{$t('manage-supplies')}}</h1>
@@ -58,6 +71,7 @@ export default {
   <pv-toolbar class="mb-4">
     <template #start>
       <pv-button class="mr-2" icon="pi pi-plus" :label="$t('actions.new')" severity="success" @click="newItem"/>
+
     </template>
   </pv-toolbar>
 
@@ -78,7 +92,6 @@ export default {
     <pv-column :exportable="false" style="min-width:8rem">
       <template #body="slotProps">
         <pv-button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editItem(slotProps.data)"/>
-        <pv-button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteItem(slotProps.data)"/>
       </template>
     </pv-column>
   </pv-data-table>

@@ -104,6 +104,19 @@
       }
     }
   },
+  "rooms-monitoring": {
+    "view": {
+      "id": "id",
+      "name": "nombre",
+      "description": "descripcion",
+      "worker": "trabajador",
+      "client": "cliente",
+      "totalbeds": "TotalCamas",
+      "totalbathrooms": "TotalBaños",
+      "totaltelevision": "TotalTelevisores",
+      "status": "stado",
+      "title": "Gestion de habitaciones"
+    },
   "interaction": {
     "notifications": {
       "title": "Notificaciones",
