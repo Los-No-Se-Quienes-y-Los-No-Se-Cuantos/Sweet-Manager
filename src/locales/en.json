@@ -104,6 +104,16 @@
       }
     }
   },
+  "interaction": {
+    "notifications": {
+      "title": "Notifications",
+      "headers": {
+        "id": "ID",
+        "title": "Title",
+        "message": "Message",
+        "date": "Date"
+      }
+    },
   "actions": {
     "edit": "Edit",
     "new": "New",
