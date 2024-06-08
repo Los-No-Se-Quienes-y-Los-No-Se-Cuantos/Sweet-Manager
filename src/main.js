@@ -42,6 +42,7 @@ import Divider from "primevue/divider";
 import SelectButton from "primevue/selectbutton";
 import CountryFlagEsm from "vue-country-flag-next";
 import Password from "primevue/password";
+import Calendar from "primevue/calendar";
 
 // PrimeIcons
 import 'primeicons/primeicons.css';
@@ -100,6 +101,7 @@ app
     .component('pv-chart', Chart)
     .component('pv-flag', CountryFlagEsm)
     .component('pv-password', Password)
+    .component("pv-calendar", Calendar)
 
 // Add i18n plugin
 app.use(i18n);

@@ -6,6 +6,7 @@ export class Supply {
         this.address=address;
         this.expire=expire;
     }
+
     static fromDisplayableSupply(displayableSupply){
         return new Supply(
             displayableSupply.id,
@@ -14,14 +15,5 @@ export class Supply {
             displayableSupply.address,
             displayableSupply.expire,
         )
-    }
-    static toDisplayableSupply(supply){
-        return{
-            id: supply.id,
-            product: supply.product,
-            quantity: supply.quantity,
-            address: supply.address,
-            expire: supply.expire,
-        }
     }
 }

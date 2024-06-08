@@ -27,34 +27,18 @@ export default {
     newItem() {
       this.$emit('new-item');
     },
-    confirmDeleteSelected() {
-      this.$confirm.require({
-        message:          `Are you sure you want to delete the selected ${this.title.plural}?`,
-        header:           'Confirmation',
-        icon:             'pi pi-exclamation-triangle',
-        rejectClassName:  'p-button-secondary p-button-outlined',
-        rejectLabel:      'Cancel',
-        acceptLabel:      'Delete',
-        acceptClassName:  'p-button-danger',
-        accept:           () => this.$emit('delete-selected-items', this.selectedItems),
-        reject:           () => {}
-      });
-    },
-    exportToCsv() {
-      this.$refs.dt.exportCSV();
-    },
     editItem(item) {
       this.$emit('edit-item', item);
     },
     confirmDeleteItem(item) {
 
       this.$confirm.require({
-        message:          `Are you sure you want to delete this ${this.title.singular}?`,
-        header:           'Confirmation',
+        message:          this.$t('actions.confirm-delete'),
+        header:           this.$t('actions.confirmation'),
         icon:             'pi pi-exclamation-triangle',
         rejectClassName:  'p-button-secondary p-button-outlined',
-        rejectLabel:      'Cancel',
-        acceptLabel:      'Delete',
+        rejectLabel:      this.$t('actions.cancel'),
+        acceptLabel:      this.$t('actions.delete'),
         acceptClassName:  'p-button-danger',
         accept:           () => this.$emit('delete-item', item),
         reject:           () => {}
@@ -66,16 +50,14 @@ export default {
 
 <template>
   <pv-confirm-dialog/>
-  <h3>Manage {{ title.plural }}</h3>
+  <div class="title">
+    <p>{{$t('control-panel')}}</p>
+    <h1>{{$t('manage-supplies')}}</h1>
+  </div>
   <!-- Toolbar Section -->
   <pv-toolbar class="mb-4">
     <template #start>
-      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
-      <pv-button :disabled="!selectedItems || !selectedItems.length" icon="pi pi-trash" label="Delete" severity="danger"
-                 @click="confirmDeleteSelected"/>
-    </template>
-    <template #end>
-      <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>
+      <pv-button class="mr-2" icon="pi pi-plus" :label="$t('actions.new')" severity="success" @click="newItem"/>
     </template>
   </pv-toolbar>
 
@@ -91,7 +73,6 @@ export default {
       current-page-report-template="Showing {first} to {last} of {totalRecords} ${{title.plural}}"
       data-key="id"
       paginator-template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown">
-    <pv-column :exportable="false" selectionMode="multiple" style="width: 3rem"/>
     <slot name="custom-columns"></slot>
     <pv-column v-if="dynamic" v-for="column in columns" :key="column.field" :field="column.field" :header="column.header"/>
     <pv-column :exportable="false" style="min-width:8rem">
@@ -103,3 +84,19 @@ export default {
   </pv-data-table>
 
 </template>
+
+<style scoped>
+.title {
+  p {
+    font-size: 1.5rem;
+    color: #008000;
+    margin-bottom: 0;
+  }
+  h1{
+    font-size: 2rem;
+    margin-top: 0;
+  }
+  text-align: center;
+}
+
+</style>
